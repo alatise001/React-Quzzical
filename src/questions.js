@@ -1,20 +1,14 @@
 import React from "react";
 import { nanoid } from "nanoid";
 
-// import Anwer from "./answer";
-
 function Question(props) {
   const answers = props.isdata.answer;
-  const correct_answer = props.isdata.correct_answer;
 
   function answer(params) {
     const answer = answers.map((map) => {
       return {
-        // correct_answer: props.isdata.correct_answer,
         id: nanoid(),
         answer: map,
-        isTrue: false,
-        disabled: false,
       };
     });
     console.log("called");
@@ -23,32 +17,11 @@ function Question(props) {
   }
   const [isAnswer, setIsAnswer] = React.useState(answer());
 
-  // console.log(isAnswer);
-
   function handleClick(id, answer, otherid, target) {
-    setIsAnswer((prevState) => {
-      return prevState.map((prev) => {
-        return prev.id === id
-          ? { ...prev, isTrue: !prev.isTrue, disabled: false }
-          : { ...prev, disabled: !prev.disabled };
-      });
-    });
-
-    console.log(answer);
-
     props.handleClick(answer, otherid, target);
   }
-  // console.log(isAnswer);
 
   const myAnswer = isAnswer.map((map) => {
-    // const styles = () => {
-    //   // console.log(map.isTrue);
-    //   if (map.isTrue) {
-    //     return { backgroundColor: "#D6DBF5" };
-    //   } else {
-    //     return { backgroundColor: "" };
-    //   }
-    // };
     const styles = (answer) => {
       if (props.isdata.selected === answer) {
         return { backgroundColor: "#D6DBF5" };
@@ -56,10 +29,6 @@ function Question(props) {
         return { backgroundColor: "" };
       }
     };
-
-    // const styles = {
-    //   backgroundColor: map.isBool ? "#D6DBF5" : "",
-    // };
 
     const back = (answer) => {
       console.log("clicked");
@@ -79,7 +48,6 @@ function Question(props) {
         key={nanoid()}
         id={map.id}
         onClick={(e) => handleClick(map.id, map.answer, props.id, e.target)}
-        disabled={map.disabled}
       >
         {map.answer}
       </button>

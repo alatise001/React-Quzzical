@@ -14,9 +14,6 @@ function App() {
 
   function handleClick(answer, id, target) {
     console.log(answer, id, target);
-    // const mapid = isData.map((map) => {
-    //   return map.id;
-    // });
     setData((prevState) => {
       return prevState.map((mapped, index) => {
         if (id === index) {
@@ -61,7 +58,6 @@ function App() {
     return (
       <Question
         key={nanoid()}
-        // question={question}
         isdata={question}
         checked={isChecked}
         handleClick={handleClick}
@@ -76,17 +72,6 @@ function App() {
     setIsChecked((prevState) => !prevState);
 
     console.log(isScore);
-
-    // setIsScore((prevState) => {
-    //   console.log(prevState);
-    //   // isData.map((map) => {
-    //   //   if (map.selected === map.correct_answer) {
-    //   //     return prevState + 1;
-    //   //   } else {
-    //   //     return prevState;
-    //   //   }
-    //   // });
-    // });
 
     isData.map((map) => {
       console.log(map.selected, map.correct_answer);
@@ -142,17 +127,3 @@ function App() {
 }
 
 export default App;
-
-// React.useEffect(function () {
-//   const dat = data.results.map((map) => {
-//     return {
-//       questions: map.question,
-//       answer: shuffleArray([...map.incorrect_answers, map.correct_answer]),
-//       id: nanoid(),
-//       correct_answer: map.correct_answer,
-//       selected: null,
-//     };
-//   });
-
-//   setData(dat);
-// }, []);
