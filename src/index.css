@@ -15,7 +15,6 @@ figure {
 }
 
 body {
-
     background-color: #F5F7FB;
     max-width: 1080px;
     width: 90%;
@@ -157,4 +156,22 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+}
+
+.blob1 {
+    position: absolute;
+    margin: 0px;
+    left: 60%;
+    bottom: 60%;
+    z-index: -1;
+    width: 25rem;
+}
+
+.blob2 {
+    position: absolute;
+    margin: 0px;
+    top: 40%;
+    right: 50%;
+    z-index: -1;
+    width: 30rem;
 }

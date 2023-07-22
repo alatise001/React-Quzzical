@@ -2,6 +2,7 @@ import React from "react";
 import Question from "./questions";
 import Quzzical from "./quzzical";
 import { nanoid } from "nanoid";
+import myBlob from "./blobanimation.svg";
 
 function App() {
   const [isPlayAgain, setIsPlayAgain] = React.useState(false);
@@ -30,7 +31,7 @@ function App() {
 
   React.useEffect(() => {
     if (isclicked === true) {
-      fetch(`https://opentdb.com/api.php?amount=10`)
+      fetch(`https://opentdb.com/api.php?amount=5`)
         .then((result) => result.json())
         .then((data) =>
           setData(
@@ -122,6 +123,8 @@ function App() {
           <Quzzical toggle={toggle} />
         </div>
       )}
+      <img className="blob1" src={myBlob} alt="" />
+      <img className="blob2" src={myBlob} alt="" />
     </main>
   );
 }
