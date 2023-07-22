@@ -31,7 +31,7 @@ function App() {
 
   React.useEffect(() => {
     if (isclicked === true) {
-      fetch(`https://opentdb.com/api.php?amount=5`)
+      fetch(`https://opentdb.com/api.php?amount=10`)
         .then((result) => result.json())
         .then((data) =>
           setData(

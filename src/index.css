@@ -73,9 +73,18 @@ body {
     color: white;
     background-color: #4D5B9E;
     text-align: center;
-    border: .1rem solid;
+    border: .1rem solid transparent;
     border-radius: 15px;
     padding: 1.3rem 0;
+}
+
+.start-btn:focus {
+    outline: none;
+}
+
+
+.start-btn:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
 
@@ -129,6 +138,7 @@ body {
     border: none;
 }
 
+
 .submit {
     justify-self: center;
     align-self: center;
@@ -148,6 +158,15 @@ body {
     padding: 1.3rem 0;
 }
 
+.submit:focus {
+    outline: none;
+}
+
+
+.submit:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
 .scoreText {
     color: #293264;
     text-align: center;
@@ -159,19 +178,19 @@ body {
 }
 
 .blob1 {
-    position: absolute;
+    position: fixed;
     margin: 0px;
     left: 60%;
     bottom: 60%;
     z-index: -1;
-    width: 25rem;
+    width: 30rem;
 }
 
 .blob2 {
-    position: absolute;
+    position: fixed;
     margin: 0px;
-    top: 40%;
-    right: 50%;
+    top: 60%;
+    right: 60%;
     z-index: -1;
     width: 30rem;
 }
