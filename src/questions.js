@@ -11,7 +11,6 @@ function Question(props) {
         answer: map,
       };
     });
-    console.log("called");
 
     return answer;
   }
