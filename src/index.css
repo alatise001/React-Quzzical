@@ -50,6 +50,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 2rem;
 }
 
 .header {
@@ -65,7 +66,6 @@ body {
     justify-self: center;
     align-self: center;
     width: 10rem;
-    margin-top: 3rem;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -193,4 +193,77 @@ body {
     right: 60%;
     z-index: -1;
     width: 30rem;
+}
+
+.time {
+    opacity: 80%;
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 2%;
+    left: 100%;
+    color: #293264;
+    text-align: right;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.options {
+    /* outline: auto; */
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+}
+
+select {
+    border-radius: 5%;
+    border: 0.2rem solid;
+    /* padding: 1rem 0; */
+    width: 11rem;
+    height: 3.5rem;
+    color: #293264;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.style {
+    border-radius: 5%;
+    border: 0.2rem solid;
+    /* padding: 1rem 0; */
+    width: 11rem;
+    height: 3.5rem;
+    color: #293264;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+label {
+    color: #293264;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+
+::placeholder {
+    color: #293264;
 }

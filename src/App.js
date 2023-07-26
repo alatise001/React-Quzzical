@@ -12,6 +12,12 @@ function App() {
   const [isScore, setIsScore] = React.useState(0);
   const [isData, setData] = React.useState([]);
   const [isTimer, setIsTimer] = React.useState(10);
+  const [isTime, setIsTime] = React.useState();
+  const [isNoOfQuestion, SetIsNoOfQuestion] = React.useState({
+    question: 10,
+    category: "any",
+    difficulty: "any",
+  });
 
   const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5);
 
@@ -33,7 +39,9 @@ function App() {
 
   React.useEffect(() => {
     if (isclicked === true) {
-      fetch(`https://opentdb.com/api.php?amount=10`)
+      fetch(
+        `https://opentdb.com/api.php?amount=${isNoOfQuestion.question}&category=${isNoOfQuestion.category}&difficulty=${isNoOfQuestion.difficulty}`
+      )
         .then((result) => result.json())
         .then((data) => {
           if (data.response_code === 0) {
@@ -56,35 +64,19 @@ function App() {
         })
         .catch((err) => console.log(err));
     }
-
-    console.log("ran");
   }, [isPlayAgain]);
-  console.log(isData);
 
   React.useEffect(() => {
     // let timer;
     // if (isStart) {
     const timer =
-      isTimer > 0 &&
-      isStart &&
+      isStart > 0 &&
+      isTimer &&
       setInterval(() => setIsTimer(isTimer - 1), 1000);
     return () => clearInterval(timer);
     // }
   }, [isTimer, isStart]);
 
-  // const timer = () => {
-  //   if (isTimer > 0) {
-  //   } else {
-  //     console.log("Done");
-  //     setIsTimer((prevState) => prevState - 1);
-  //   }
-  // };
-
-  // if (isTimer > 0) {
-  //   setInterval(timer, 1000);
-  // } else {
-  //   console.log("Done");
-  // }
   const questions = isData.map((question, index) => {
     return (
       <Question
@@ -110,10 +102,41 @@ function App() {
         setIsScore((prevState) => ++prevState);
       }
     });
-  }
-  console.log(isScore);
 
-  function toggle(params) {
+    setIsTimer((prevState) => {
+      return (prevState = 0);
+    });
+  }
+
+  function toggle(e, dif, que, cat) {
+    SetIsNoOfQuestion((prev) => {
+      return {
+        ...prev,
+        question: que,
+        category: cat,
+        difficulty: dif,
+      };
+    });
+    let time;
+    //45secs for easy 35 for medium 25 for hard
+    console.log(e.target, dif, que);
+    const hard = 5;
+    const mid = 10;
+    const easy = 15;
+
+    if (dif === "easy") {
+      time = easy * que;
+    } else if (dif === "medium") {
+      time = mid * que;
+    } else {
+      time = hard * que;
+    }
+    setIsTime((prev) => (prev = time));
+
+    setIsTimer((prevState) => {
+      return (prevState = time);
+    });
+
     setIsClicked((prevState) => !prevState);
     setIsPlayAgain((prevState) => !prevState);
   }
@@ -126,15 +149,15 @@ function App() {
       return (prevState = 0);
     });
     setIsTimer((prevState) => {
-      return (prevState = 10);
+      return (prevState = isTime);
     });
   }
 
   return (
     <main className="main">
-      {/* <h3>{isTimer}</h3> */}
       {isStart ? (
         <div className="play">
+          <h3 className="time">Time: {isTimer}</h3>
           {questions}
           {isChecked ? (
             <h3 className="scoreText">
