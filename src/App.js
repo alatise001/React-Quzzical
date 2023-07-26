@@ -161,7 +161,7 @@ function App() {
           {questions}
           {isChecked ? (
             <h3 className="scoreText">
-              You scored {isScore}/10 correct answers
+              You scored {isScore}/{isNoOfQuestion.question} correct answers
             </h3>
           ) : (
             ""
